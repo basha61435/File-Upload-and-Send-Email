@@ -20,14 +20,11 @@ public class StudentControoler {
 	@Autowired
 	private StudentService studentService;
 
-//	@GetMapping("/")
-//	public String home() {
-//		return "index.html";
-//	}
 
 	@PostMapping("/saveStudentDetails")
-	public StudentDetails saveStudent(@RequestBody StudentDetails student) {
+	public String saveStudent(@RequestBody StudentDetails student) {
 		return studentService.saveStudent(student);
+
 	}
 
 	@GetMapping("/getAllStudent")

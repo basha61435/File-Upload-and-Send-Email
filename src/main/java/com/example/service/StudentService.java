@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.Entity.StudentDetails;
 
 public interface StudentService {
-	public StudentDetails saveStudent(StudentDetails student);
+	public String saveStudent(StudentDetails student);
 
 	public List<StudentDetails> getAllStudent();
 

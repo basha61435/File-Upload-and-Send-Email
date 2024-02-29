@@ -14,11 +14,19 @@ public class StudentServiceImp implements StudentService {
 
 	@Autowired
 	private StudentRepo repo;
+	@Autowired
+	private EmailHelper emailHelper;
 
 	@Override
-	public StudentDetails saveStudent(StudentDetails student) {
+	public String saveStudent(StudentDetails student) {
 		// TODO Auto-generated method stub
-		return repo.save(student);
+		try {
+			StudentDetails details = repo.save(student);
+			emailHelper.processAndSendMail(details);
+			return "Email Send Successfull";
+		} catch (Exception e) {
+			return "Email not Send.";
+		}
 	}
 
 	@Override
