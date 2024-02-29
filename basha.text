@@ -1,0 +1,8 @@
+SELECT roidp.user_name as ro_user_name, roidp.id as ro_roid, cred.user_name as cred_user_name, cred.id as cred_id , roidp.basic_auth_creds_id  as ro_basic_cred_id, roidp.tenant_name as ro_tenant_name, cred.tenant_name as ro_tenant_name FROM ro_idp_configuration roidp
+INNER JOIN credential cred ON roidp.tenant_name = cred.tenant_name AND roidp.basic_auth_creds_id = cred.id
+WHERE roidp.basic_auth_creds_id > 0;
+
+UPDATE ro_idp_configuration roidp
+INNER JOIN credential cred ON roidp.tenant_name = cred.tenant_name AND roidp.basic_auth_creds_id = cred.id  
+SET roidp.user_name = cred.user_name
+WHERE roidp.basic_auth_creds_id > 0;
