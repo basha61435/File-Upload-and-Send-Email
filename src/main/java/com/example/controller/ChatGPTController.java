@@ -20,7 +20,7 @@ public class ChatGPTController {
     private RestTemplate restTemplate;
     @Value("${open.api.url}")
     private String apiUrl;
-    @Value("${open.api.key}")
+    @Value("${open.api.key1}")
     private String apiKey;
 
     @GetMapping("/chat")
