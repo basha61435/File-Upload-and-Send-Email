@@ -1,6 +1,8 @@
 package com.example.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -14,5 +16,9 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
 				.allowedHeaders("*").exposedHeaders("header1", "header2").allowCredentials(false).maxAge(3600);
 	}
-
+	@Bean
+	public RestTemplate getRestTemplate() {
+		RestTemplate restTemplate = new RestTemplate();
+		return restTemplate;
+	}
 }
